@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[Votre Nom] - Portfolio 2025 | MISEI Physique & Applications</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation 3D -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span class="logo-text">PORTFOLIO</span>
+          <div class="logo-3d"></div>
+        </div>
+
+        <div class="nav-menu">
+          <a href="#accueil" class="nav-link active">
+            <i class="fas fa-home"></i> Accueil
+          </a>
+          <a href="#specialites" class="nav-link">
+            <i class="fas fa-star"></i> Spécialités
+          </a>
+          <a href="#projets" class="nav-link">
+            <i class="fas fa-code"></i> Projets
+          </a>
+          <a href="#contact" class="nav-link">
+            <i class="fas fa-envelope"></i> Contact
+          </a>
+        </div>
+
+        <button class="menu-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Section Profil avec Animation 3D -->
+    <section id="accueil" class="hero-section">
+      <div class="hero-container">
+        <!-- Cube 3D Rotatif -->
+        <div class="cube-3d">
+          <div class="cube-face front">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <div class="cube-face back">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <div class="cube-face right">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="cube-face left">
+            <i class="fas fa-music"></i>
+          </div>
+          <div class="cube-face top">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="cube-face bottom">
+            <i class="fas fa-rocket"></i>
+          </div>
+        </div>
+
+        <!-- Photo de Profil -->
+        <div class="profile-card">
+          <div class="profile-image-container">
+            <img
+              src="/IMG-20251104-WA0001_1.jpg"
+              alt="Photo de Andréas"
+              class="profile-img"
+            />
+            <div class="profile-glow"></div>
+          </div>
+
+          <div class="profile-info">
+            <h1 class="profile-name">Andréas</h1>
+            <h2 class="profile-title">
+              <span class="typed-text"></span>
+            </h2>
+
+            <div class="status-badge">
+              <i class="fas fa-user-graduate"></i>
+              <span>Étudiant en MASTER I MISEI</span>
+            </div>
+
+            <p class="profile-university">
+              <i class="fas fa-university"></i>
+              Mention : Physique & Applications<br />
+              Université d'Antananarivo
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Animées -->
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-number" data-count="4">0</div>
+          <div class="stat-label">Spécialités</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="8">0</div>
+          <div class="stat-label">Projets</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="6">0</div>
+          <div class="stat-label">Langages</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="4">0</div>
+          <div class="stat-label">Instruments</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Spécialités -->
+    <section id="specialites" class="specialites-section">
+      <h2 class="section-title">
+        <span class="title-number">01</span>
+        Mes Spécialités
+      </h2>
+
+      <div class="specialites-grid">
+        <!-- Carte Électronique Embarquée -->
+        <a href="/elec.html" class="specialite-card card-3d">
+          <div class="card-icon">
+            <i class="fas fa-microchip"></i>
+          </div>
+          <h3 class="card-title">Électronique Embarquée</h3>
+          <p class="card-desc">Arduino, IoT, Systèmes embarqués</p>
+          <div class="card-progress">
+            <div class="progress-bar" style="width: 90%"></div>
+            <span class="progress-text">Intermediaires</span>
+          </div>
+          <div class="card-hover">
+            <span>Voir les projets →</span>
+          </div>
+        </a>
+
+        <!-- Carte Réseaux -->
+        <a href="/reseaux.html" class="specialite-card card-3d">
+          <div class="card-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <h3 class="card-title">Administration Réseaux & Système</h3>
+          <p class="card-desc">Linux, Sécurité, Infrastructure</p>
+          <div class="card-progress">
+            <div class="progress-bar" style="width: 85%"></div>
+            <span class="progress-text">Intermediaires</span>
+          </div>
+          <div class="card-hover">
+            <span>Voir expérience →</span>
+          </div>
+        </a>
+
+        <!-- Carte Informatique -->
+        <a href="/info.html" class="specialite-card card-3d">
+          <div class="card-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3 class="card-title">Développement Informatique</h3>
+          <p class="card-desc">Full-Stack, Base de données, Applications</p>
+          <div class="card-progress">
+            <div class="progress-bar" style="width: 80%"></div>
+            <span class="progress-text">Intermédiaire</span>
+          </div>
+          <div class="card-hover">
+            <span>Voir projets →</span>
+          </div>
+        </a>
+
+        <!-- Carte Musique -->
+        <a href="/mozika.html" class="specialite-card card-3d">
+          <div class="card-icon">
+            <i class="fas fa-music"></i>
+          </div>
+          <h3 class="card-title">Musique & Instruments</h3>
+          <p class="card-desc">Multi-instrumentiste, Composition</p>
+          <div class="card-progress">
+            <div class="progress-bar" style="width: 75%"></div>
+            <span class="progress-text">Intermédiaire</span>
+          </div>
+          <div class="card-hover">
+            <span>Voir instruments →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section Projets Récents -->
+    <section id="projets" class="projets-section">
+      <h2 class="section-title">
+        <span class="title-number">02</span>
+        Projets Récents
+      </h2>
+
+      <div class="projets-slider">
+        <!-- Projet GPS Tracker -->
+        <div class="projet-slide">
+          <div class="projet-date">2025 - Mémoire de Licence</div>
+          <h3 class="projet-titre">GPS Tracker avec Arduino Uno + SIM808</h3>
+          <p class="projet-description">
+            Système de localisation en temps réel avec envoi de coordonnées par
+            SMS.
+          </p>
+          <div class="projet-tags">
+            <span class="tag">Arduino</span>
+            <span class="tag">SIM808</span>
+            <span class="tag">GPS</span>
+            <span class="tag">C</span>
+          </div>
+        </div>
+
+        <!-- Projet Maison Intelligente -->
+        <div class="projet-slide">
+          <div class="projet-date">2024 - Projet Tutorat</div>
+          <h3 class="projet-titre">Prototype Maison Intelligente</h3>
+          <p class="projet-description">
+            Barrière automatique + Allumage automatique + Arrosage jardin en
+            maquette.
+          </p>
+          <div class="projet-tags">
+            <span class="tag">IoT</span>
+            <span class="tag">Automatisme</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">Capteurs</span>
+          </div>
+        </div>
+
+        <!-- Projet ORTM -->
+        <div class="projet-slide">
+          <div class="projet-date">2025 - Stage ORTM Madagascar</div>
+          <h3 class="projet-titre">Blocage de sites web pour productivité</h3>
+          <p class="projet-description">
+            Administration réseau avec règles de filtrage sur pare-feu.
+          </p>
+          <div class="projet-tags">
+            <span class="tag">Linux</span>
+            <span class="tag">iptables</span>
+            <span class="tag">Réseau</span>
+            <span class="tag">Sécurité</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Disponible pour</h3>
+          <p>Projets innovants • Stages • Collaboration technique</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>
+            <i class="fas fa-envelope"></i> andreas44@gmail.com<br />
+            <i class="fas fa-phone"></i> +261 38 10 611 76
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>GitHub</h3>
+          <a href="https://github.com/[votre-username]" class="github-link">
+            <i class="fab fa-github"></i> Voir mon code source
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2025 RAMAHAIMANANJATOVO Andréas - Portfolio Professionnel. Tous
+          droits réservés.
+        </p>
+        <p>Étudiant en MISEI - Université d'Antananarivo</p>
+      </div>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Développement Informatique - Portfolio</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">
+          <span class="logo-text">PORTFOLIO</span>
+        </a>
+        <div class="nav-menu">
+          <a href="../index.html" class="nav-link">
+            <i class="fas fa-arrow-left"></i> Retour
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-content">
+      <div class="page-header">
+        <h1><i class="fas fa-laptop-code"></i> Développement Informatique</h1>
+        <p class="page-subtitle">
+          Full-Stack • Bases de données • Applications • Web
+        </p>
+      </div>
+
+      <section class="project-section">
+        <h2 class="section-title">💼 Logiciel de Gestion de Personnel</h2>
+        <div class="project-meta">
+          <span class="date-badge">2023 - Projet Académique</span>
+          <span class="tech-badge">PHP 8.1</span>
+          <span class="tech-badge">MySQL</span>
+          <span class="tech-badge">PDO</span>
+          <span class="tech-badge">HTML5/CSS3</span>
+        </div>
+
+        <div class="project-details">
+          <div class="project-image">
+            <div class="image-placeholder code-style">
+              <i class="fas fa-users-cog"></i>
+              <p>Interface de Gestion</p>
+            </div>
+          </div>
+
+          <div class="project-description">
+            <h3>Fonctionnalités Implémentées</h3>
+            <ul class="features-list">
+              <li>
+                <i class="fas fa-user-plus"></i> Gestion CRUD des employés
+              </li>
+              <li><i class="fas fa-chart-bar"></i> Dashboard statistiques</li>
+              <li><i class="fas fa-file-export"></i> Export PDF/Excel</li>
+              <li><i class="fas fa-search"></i> Recherche avancée</li>
+              <li>
+                <i class="fas fa-shield-alt"></i> Authentification sécurisée
+              </li>
+              <li><i class="fas fa-bell"></i> Notifications système</li>
+            </ul>
+
+            <h3>Structure de la Base de Données</h3>
+            <div class="code-snippet">
+              <pre><code class="language-sql">-- Table employés
+CREATE TABLE employes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    matricule VARCHAR(20) UNIQUE,
+    nom VARCHAR(50) NOT NULL,
+    prenom VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    poste VARCHAR(50),
+    salaire DECIMAL(10,2),
+    date_embauche DATE,
+    actif BOOLEAN DEFAULT TRUE
+);
+
+-- Table utilisateurs (authentification)
+CREATE TABLE utilisateurs (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE,
+    password_hash VARCHAR(255),
+    role ENUM('admin', 'rh', 'viewer'),
+    last_login DATETIME
+);</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-example">
+          <h3><i class="fas fa-code"></i> Exemple de Code PDO Sécurisé</h3>
+          <pre><code class="language-php">&lt;?php
+// Connexion PDO sécurisée
+class Database {
+    private static $instance = null;
+    private $pdo;
+    
+    private function __construct() {
+        try {
+            $this->pdo = new PDO(
+                'mysql:host=localhost;dbname=gestion_personnel;charset=utf8',
+                'username',
+                'password',
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    PDO::ATTR_EMULATE_PREPARES => false
+                ]
+            );
+        } catch (PDOException $e) {
+            die('Erreur de connexion : ' . $e->getMessage());
+        }
+    }
+    
+    public static function getInstance() {
+        if (self::$instance === null) {
+            self::$instance = new Database();
+        }
+        return self::$instance->pdo;
+    }
+}
+
+// Requête préparée (prévention injection SQL)
+function getEmployeById($id) {
+    $pdo = Database::getInstance();
+    $stmt = $pdo->prepare("SELECT * FROM employes WHERE id = :id");
+    $stmt->execute([':id' => $id]);
+    return $stmt->fetch();
+}
+?&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="languages-section">
+        <h2 class="section-title">💻 Langages Maîtrisés avec Niveaux</h2>
+
+        <div class="languages-grid">
+          <!-- JavaScript -->
+          <div class="language-card">
+            <div class="language-header">
+              <div class="language-icon">
+                <i class="fab fa-js-square"></i>
+              </div>
+              <div class="language-info">
+                <h3>JavaScript</h3>
+                <div class="language-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <span class="level-text">Intermédiaire</span>
+                </div>
+              </div>
+            </div>
+            <div class="language-skills"></div>
+          </div>
+
+          <!-- Python -->
+          <div class="language-card">
+            <div class="language-header">
+              <div class="language-icon">
+                <i class="fab fa-python"></i>
+              </div>
+              <div class="language-info">
+                <h3>Python</h3>
+                <div class="language-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <span class="level-text">Intermediaires</span>
+                </div>
+              </div>
+            </div>
+            <div class="language-skills"></div>
+          </div>
+
+          <!-- PHP -->
+          <div class="language-card">
+            <div class="language-header">
+              <div class="language-icon">
+                <i class="fab fa-php"></i>
+              </div>
+              <div class="language-info">
+                <h3>PHP</h3>
+                <div class="language-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <span class="level-text">Intermediaires</span>
+                </div>
+              </div>
+            </div>
+            <div class="language-skills"></div>
+          </div>
+
+          <!-- C -->
+          <div class="language-card">
+            <div class="language-header">
+              <div class="language-icon">
+                <i class="fas fa-c"></i>
+              </div>
+              <div class="language-info">
+                <h3>C</h3>
+                <div class="language-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <span class="level-text">Débutant+</span>
+                </div>
+              </div>
+            </div>
+            <div class="language-skills">
+              <span class="skill-tag">Algorithmes</span>
+              <span class="skill-tag">Structures</span>
+              <span class="skill-tag">Pointeurs</span>
+            </div>
+          </div>
+
+          <!-- HTML/CSS -->
+          <div class="language-card">
+            <div class="language-header">
+              <div class="language-icon">
+                <i class="fab fa-html5"></i>
+              </div>
+              <div class="language-info">
+                <h3>HTML5/CSS3</h3>
+                <div class="language-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                  </div>
+                  <span class="level-text">Avancé</span>
+                </div>
+              </div>
+            </div>
+            <div class="language-skills">
+              <span class="skill-tag">Responsive</span>
+              <span class="skill-tag">Flexbox/Grid</span>
+              <span class="skill-tag">Animations</span>
+              <span class="skill-tag">SASS</span>
+            </div>
+          </div>
+
+          <!-- SQL -->
+          <div class="language-card">
+            <div class="language-header">
+              <div class="language-icon">
+                <i class="fas fa-database"></i>
+              </div>
+              <div class="language-info">
+                <h3>SQL</h3>
+                <div class="language-level">
+                  <div class="level-dots">
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <span class="level-text">Intermediaires</span>
+                </div>
+              </div>
+            </div>
+            <div class="language-skills">
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">Optimisation</span>
+              <span class="skill-tag">Transactions</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="frameworks-section">
+        <h2 class="section-title">⚡ Frameworks & Outils</h2>
+        <div class="frameworks-grid">
+          <div class="framework-card">
+            <div class="framework-icon">
+              <i class="fab fa-bootstrap"></i>
+            </div>
+            <h3>Bootstrap 5</h3>
+            <p>UI Responsive</p>
+          </div>
+
+          <div class="framework-card">
+            <div class="framework-icon">
+              <i class="fab fa-git-alt"></i>
+            </div>
+            <h3>Git/GitHub</h3>
+            <p>Version Control</p>
+          </div>
+
+          <div class="framework-card">
+            <div class="framework-icon">
+              <i class="fas fa-terminal"></i>
+            </div>
+            <h3>VS Code</h3>
+            <p>IDE Principal</p>
+          </div>
+
+          <div class="framework-card">
+            <div class="framework-icon">
+              <i class="fab fa-node-js"></i>
+            </div>
+            <h3>Node.js</h3>
+            <p>Runtime JS</p>
+          </div>
+
+          <div class="framework-card">
+            <div class="framework-icon">
+              <i class="fas fa-layer-group"></i>
+            </div>
+            <h3>MVC Pattern</h3>
+            <p>Architecture</p>
+          </div>
+
+          <div class="framework-card">
+            <div class="framework-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3>XAMPP/WAMP/Laragon</h3>
+            <p>Environnement Dev</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-footer">
+        <a href="reseaux.html" class="prev-page">
+          <i class="fas fa-arrow-left"></i>
+          <span>Administration Réseaux</span>
+        </a>
+        <a href="mozika.html" class="next-page">
+          <i class="fas fa-arrow-right"></i>
+          <span>Musique & Instruments</span>
+        </a>
+      </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>

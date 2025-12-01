@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musique & Instruments - Portfolio</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .instruments-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .instrument-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .instrument-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+        box-shadow: 0 15px 30px rgba(245, 158, 11, 0.2);
+      }
+
+      .instrument-image {
+        height: 200px;
+        background: linear-gradient(45deg, #1a1a2e, #16213e);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .instrument-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .instrument-card:hover .instrument-image img {
+        transform: scale(1.05);
+      }
+
+      .instrument-icon {
+        position: absolute;
+        font-size: 3rem;
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .instrument-content {
+        padding: 1.5rem;
+      }
+
+      .instrument-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .instrument-name {
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .instrument-level {
+        background: rgba(245, 158, 11, 0.2);
+        color: var(--accent);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+
+      .instrument-details {
+        color: var(--gray);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .skills-list {
+        margin-top: 1rem;
+        padding-left: 1.2rem;
+      }
+
+      .skills-list li {
+        margin-bottom: 0.5rem;
+        color: var(--light);
+      }
+
+      .music-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 3rem 0;
+      }
+
+      .stat-card {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .stat-number {
+        font-family: "Orbitron", sans-serif;
+        font-size: 2rem;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      .audio-player {
+        margin: 3rem 0;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .audio-title {
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .audio-title i {
+        color: var(--accent);
+        font-size: 1.5rem;
+      }
+
+      audio {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .genre-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 2rem 0;
+      }
+
+      .genre-tag {
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+      }
+
+      .influences {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin: 2rem 0;
+      }
+
+      .influence-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">
+          <span class="logo-text">PORTFOLIO</span>
+        </a>
+        <div class="nav-menu">
+          <a href="../index.html" class="nav-link">
+            <i class="fas fa-arrow-left"></i> Retour
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-content">
+      <div class="page-header">
+        <h1><i class="fas fa-music"></i> Musique & Instruments</h1>
+        <p class="page-subtitle">
+          Multi-Instrumentiste • Composition • Performance • Théorie Musicale
+        </p>
+      </div>
+
+      <div class="music-stats">
+        <div class="stat-card">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Instruments Maîtrisés</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Années d'Expérience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">550+</div>
+          <div class="stat-label">Morceaux Appris</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Groupes Musicaux</div>
+        </div>
+      </div>
+
+      <section class="instruments-section">
+        <h2 class="section-title">🎵 Mes Instruments</h2>
+
+        <div class="instruments-grid">
+          <!-- Batterie -->
+          <div class="instrument-card">
+            <div class="instrument-image">
+              <div class="instrument-icon">
+                <i class="fas fa-drum"></i>
+              </div>
+              <img
+                src="/images (11).jpeg"
+                alt="Batterie acoustique"
+                onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Crect%20width=%22100%22%20height=%22100%22%20fill=%22%231f2937%22/%3E%3Ctext%20x=%2250%22%20y=%2250%22%20font-family=%22Arial%22%20font-size=%2214%22%20fill=%22%236366f1%22%20text-anchor=%22middle%22%20dy=%22.3em%22%3EBatterie%3C/text%3E%3C/svg%3E';"
+                loading="lazy"
+              />
+            </div>
+            <div class="instrument-content">
+              <div class="instrument-title">
+                <div class="instrument-name">Batterie</div>
+                <div class="instrument-level">Niveau Intermédiaire+</div>
+              </div>
+              <div class="instrument-details">
+                <p>
+                  pratique en batterie acoustique. Spécialisé dans les styles
+                  rock et funk.
+                </p>
+                <ul class="skills-list">
+                  <li>✅ Rythmes complexes (syncope, polyrythmie)</li>
+                  <li>✅ Techniques de caisse claire</li>
+                  <li>✅ Coordination indépendante des membres</li>
+                  <li>✅ Improvisation en groupe</li>
+                  <li>⏳ Double pédale (en apprentissage)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guitare Acoustique -->
+          <div class="instrument-card">
+            <div class="instrument-image">
+              <div class="instrument-icon">
+                <i class="fas fa-guitar"></i>
+              </div>
+              <img
+                src="/ibanez-vc44ce-opn_1_GIT0061142-000.jpg"
+                alt="Guitare acoustique"
+                onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Crect%20width=%22100%22%20height=%22100%22%20fill=%22%231f2937%22/%3E%3Ctext%20x=%2250%22%20y=%2250%22%20font-family=%22Arial%22%20font-size=%2214%22%20fill=%22%236366f1%22%20text-anchor=%22middle%22%20dy=%22.3em%22%3EGuitare%3C/text%3E%3C/svg%3E';"
+                loading="lazy"
+              />
+            </div>
+            <div class="instrument-content">
+              <div class="instrument-title">
+                <div class="instrument-name">Guitare Acoustique</div>
+                <div class="instrument-level">Niveau Intermédiaire</div>
+              </div>
+              <div class="instrument-details">
+                <p>
+                  6 ans d'expérience. Privilégie le fingerstyle et
+                  l'accompagnement.
+                </p>
+                <ul class="skills-list">
+                  <li>✅ Accords barrés maîtrisés</li>
+                  <li>✅ Fingerstyle intermédiaire</li>
+                  <li>✅ Techniques de picking variées</li>
+                  <li>✅ Transposition d'accords</li>
+                  <li>⏳ Solos (en progression)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guitare Solo (Électrique) -->
+          <div class="instrument-card">
+            <div class="instrument-image">
+              <div class="instrument-icon">
+                <i class="fas fa-guitar-electric"></i>
+              </div>
+              <img
+                src="/gibson-guitare-electrique-les-paul-standard-60s-figured-top-bourbon-burst.jpg"
+                alt="Guitare électrique"
+                onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Crect%20width=%22100%22%20height=%22100%22%20fill=%22%231f2937%22/%3E%3Ctext%20x=%2250%22%20y=%2250%22%20font-family=%22Arial%22%20font-size=%2214%22%20fill=%22%236366f1%22%20text-anchor=%22middle%22%20dy=%22.3em%22%3EGuitare%20Solo%3C/text%3E%3C/svg%3E';"
+                loading="lazy"
+              />
+            </div>
+            <div class="instrument-content">
+              <div class="instrument-title">
+                <div class="instrument-name">Guitare Solo (Électrique)</div>
+                <div class="instrument-level">Niveau Intermédiaire</div>
+              </div>
+              <div class="instrument-details">
+                <p>
+                  4 ans de pratique sur guitare électrique, orienté rock et
+                  blues.
+                </p>
+                <ul class="skills-list">
+                  <li>✅ Techniques de bend et vibrato</li>
+                  <li>✅ Solos pentatoniques</li>
+                  <li>✅ Utilisation des effets (distortion, delay)</li>
+                  <li>✅ Improvisation sur grilles d'accords</li>
+                  <li>⏳ Tapping et sweeping (débutant)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guitare Basse -->
+          <div class="instrument-card">
+            <div class="instrument-image">
+              <div class="instrument-icon">
+                <i class="fas fa-guitar-bass"></i>
+              </div>
+              <img
+                src="/Yamaha-TRMX605FMNS.jpg.webp"
+                alt="Guitare basse"
+                onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Crect%20width=%22100%22%20height=%22100%22%20fill=%22%231f2937%22/%3E%3Ctext%20x=%2250%22%20y=%2250%22%20font-family=%22Arial%22%20font-size=%2214%22%20fill=%22%236366f1%22%20text-anchor=%22middle%22%20dy=%22.3em%22%3EGuitare%20Basse%3C/text%3E%3C/svg%3E';"
+                loading="lazy"
+              />
+            </div>
+            <div class="instrument-content">
+              <div class="instrument-title">
+                <div class="instrument-name">Guitare Basse</div>
+                <div class="instrument-level">Niveau Intermédiaire</div>
+              </div>
+              <div class="instrument-details">
+                <p>
+                  5 ans d'expérience, spécialisé dans les lignes de basse funk
+                  et rock.
+                </p>
+                <ul class="skills-list">
+                  <li>✅ Groove et pocket timing</li>
+                  <li>✅ Techniques slap et pop</li>
+                  <li>✅ Harmonies et walking bass</li>
+                  <li>✅ Utilisation de l'octaver et fuzz</li>
+                  <li>⏳ Techniques de tapping basse</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Piano -->
+          <div class="instrument-card">
+            <div class="instrument-image">
+              <div class="instrument-icon">
+                <i class="fas fa-piano"></i>
+              </div>
+              <img
+                src="/19784724_800.jpg"
+                alt="Guitare basse"
+                onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Crect%20width=%22100%22%20height=%22100%22%20fill=%22%231f2937%22/%3E%3Ctext%20x=%2250%22%20y=%2250%22%20font-family=%22Arial%22%20font-size=%2214%22%20fill=%22%236366f1%22%20text-anchor=%22middle%22%20dy=%22.3em%22%3EGuitare%20Basse%3C/text%3E%3C/svg%3E';"
+                loading="lazy"
+              />
+            </div>
+            <div class="instrument-content">
+              <div class="instrument-title">
+                <div class="instrument-name">Piano</div>
+                <div class="instrument-level">Niveau Intermédiaire</div>
+              </div>
+              <div class="instrument-details">
+                <p>3 ans de pratique, approche moderne et composition.</p>
+                <ul class="skills-list">
+                  <li>✅ Accords et progressions</li>
+                  <li>✅ Mains indépendantes</li>
+                  <li>✅ Improvisation jazz/blues</li>
+                  <li>✅ Utilisation de synthétiseurs</li>
+                  <li>⏳ Lecture à vue avancée</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="music-skills">
+        <h2 class="section-title">🎼 Compétences Musicales Globales</h2>
+
+        <div class="genre-tags">
+          <span class="genre-tag">Rock</span>
+          <span class="genre-tag">Funk</span>
+          <span class="genre-tag">Blues</span>
+          <span class="genre-tag">Jazz</span>
+          <span class="genre-tag">Fusion</span>
+          <span class="genre-tag">Pop</span>
+          <span class="genre-tag">Metal Progressif</span>
+          <span class="genre-tag">Reggae</span>
+        </div>
+
+        <div class="audio-player">
+          <div class="audio-title">
+            <i class="fas fa-headphones"></i>
+            <h3>Extrait de Composition Personnelle</h3>
+          </div>
+          <p style="color: var(--gray); margin-bottom: 1rem">
+            Démo enregistrée en home studio (batterie + guitare + basse) : en
+            cours ......
+          </p>
+          <audio controls>
+            <source src="../assets/audio/demo.mp3" type="audio/mpeg" />
+            <source src="../assets/audio/demo.ogg" type="audio/ogg" />
+          </audio>
+          <p
+            style="color: var(--gray); font-size: 0.9rem; margin-top: 1rem"
+          ></p>
+        </div>
+
+        <h3 style="margin: 2rem 0 1rem 0">Influences Musicales</h3>
+        <div class="influences">
+          <div class="influence-item">
+            <i class="fas fa-guitar"></i>
+            <span>Jimi Hendrix</span>
+          </div>
+          <div class="influence-item">
+            <i class="fas fa-drum"></i>
+            <span>John Bonham</span>
+          </div>
+          <div class="influence-item">
+            <i class="fas fa-guitar-bass"></i>
+            <span>Flea (RHCP)</span>
+          </div>
+          <div class="influence-item">
+            <i class="fas fa-music"></i>
+            <span>Led Zeppelin</span>
+          </div>
+          <div class="influence-item">
+            <i class="fas fa-keyboard"></i>
+            <span>Herbie Hancock</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="equipment-section">
+        <h2 class="section-title">🎛️ Équipement & Setup</h2>
+        <div class="equipment-grid">
+          <div class="equipment-item">
+            <h4>Home Studio</h4>
+            <ul>
+              <li>Interface audio Focusrite Scarlett</li>
+              <li>DAW: Reaper / Ableton Live</li>
+              <li>Microphones Shure SM57/58</li>
+              <li>Casque monitoring Audio-Technica</li>
+            </ul>
+          </div>
+          <div class="equipment-item">
+            <h4>Instruments Possédés</h4>
+            <ul>
+              <li>Guitare Gibson</li>
+              <li>Guitare basse</li>
+              <li>Clavier</li>
+            </ul>
+          </div>
+          <div class="equipment-item">
+            <h4>Effets & Pédales</h4>
+            <ul>
+              <li>Multi-effets BOSS ME25</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-footer">
+        <a href="informatique.html" class="prev-page">
+          <i class="fas fa-arrow-left"></i>
+          <span>Développement Informatique</span>
+        </a>
+        <a href="../index.html" class="next-page">
+          <i class="fas fa-home"></i>
+          <span>Retour à l'Accueil</span>
+        </a>
+      </div>
+    </main>
+
+    <script src="/index.js"></script>
+    <script>
+      // Gestion des images manquantes
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const images = document.querySelectorAll("img");
+        images.forEach((img) => {
+          img.onerror = function () {
+            this.style.display = "none";
+            this.parentElement.querySelector(".instrument-icon").style.display =
+              "flex";
+          };
+        });
+
+        // Simulation de lecteur audio si fichier manquant
+        const audio = document.querySelector("audio");
+        if (audio) {
+          audio.onerror = function () {
+            this.parentElement.innerHTML += `
+                        <p style="color: var(--accent); margin-top: 1rem;">
+                            <i class="fas fa-info-circle"></i>
+                            Pour ajouter votre démo audio: placez un fichier MP3 dans assets/audio/demo.mp3
+                        </p>
+                    `;
+          };
+        }
+      });
+    </script>
+  </body>
+</html>
+```

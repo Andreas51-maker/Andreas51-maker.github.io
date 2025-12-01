@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administration Réseaux - Portfolio</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">
+          <span class="logo-text">PORTFOLIO</span>
+        </a>
+        <div class="nav-menu">
+          <a href="../index.html" class="nav-link">
+            <i class="fas fa-arrow-left"></i> Retour
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page-content">
+      <div class="page-header">
+        <h1>
+          <i class="fas fa-network-wired"></i> Administration Réseaux & Système
+        </h1>
+        <p class="page-subtitle">
+          Linux • Sécurité • Infrastructure • Monitoring
+        </p>
+      </div>
+
+      <section class="experience-section">
+        <h2 class="section-title">🏢 Stage ORTM Madagascar</h2>
+        <div class="experience-meta">
+          <span class="date-badge">2025 - 3 mois</span>
+          <span class="role-badge"
+            >Administrateur Réseaux & Système Stagiaire</span
+          >
+          <span class="location-badge">Anosy, Antananarivo</span>
+        </div>
+
+        <div class="experience-details">
+          <div class="company-logo">
+            <!-- Logo ORTM -->
+            <div class="logo-placeholder">
+              <i class="fas fa-tv"></i>
+              <p>ORTM Madagascar</p>
+            </div>
+          </div>
+
+          <div class="experience-description">
+            <h3>Mission Principale</h3>
+            <p>
+              Mise en place d'un système de filtrage web pour améliorer la
+              productivité des employés :
+            </p>
+
+            <ul>
+              <li>🔧 Configuration pare-feu Linux (iptables)</li>
+              <li>🌐 Blocage de sites non-productifs</li>
+              <li>📊 Analyse du trafic réseau</li>
+              <li>🛡️ Renforcement sécurité réseau</li>
+              <li>📋 Documentation des procédures</li>
+            </ul>
+
+            <h3>Commandes Linux Utilisées</h3>
+            <div class="code-snippet">
+              <pre><code># Configuration iptables pour blocage
+iptables -A FORWARD -m string --string "facebook.com" --algo bm -j DROP
+iptables -A FORWARD -m string --string "youtube.com" --algo bm -j DROP
+
+# Monitoring du réseau
+tcpdump -i eth0 -n
+netstat -tulpn
+ss -tunap
+
+# Gestion des services
+systemctl status apache2
+journalctl -f -u nginx</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills-section">
+        <h2 class="section-title">📊 Compétences Niveau par Niveau</h2>
+
+        <div class="level-grid">
+          <!-- Niveau intermediaires -->
+          <div class="level-category">
+            <h3 class="level-title expert">intermediaires</h3>
+            <div class="level-skills">
+              <div class="skill-item">
+                <i class="fab fa-linux"></i>
+                <span>Administration Linux</span>
+                <div class="skill-bar" style="width: 95%"></div>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Sécurité Réseau</span>
+                <div class="skill-bar" style="width: 90%"></div>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-fire"></i>
+                <span>Configuration iptables</span>
+                <div class="skill-bar" style="width: 92%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Niveau intermediaires -->
+          <div class="level-category">
+            <h3 class="level-title advanced">INTERMEDIAIRES</h3>
+            <div class="level-skills">
+              <div class="skill-item">
+                <i class="fas fa-server"></i>
+                <span>Virtualisation</span>
+                <div class="skill-bar" style="width: 80%"></div>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-network-wired"></i>
+                <span>Topologie Réseau</span>
+                <div class="skill-bar" style="width: 85%"></div>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <span>Services DNS/DHCP</span>
+                <div class="skill-bar" style="width: 78%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Niveau Intermédiaire -->
+          <div class="level-category">
+            <h3 class="level-title intermediate">INTERMÉDIAIRE</h3>
+            <div class="level-skills">
+              <div class="skill-item">
+                <i class="fab fa-docker"></i>
+                <span>Docker</span>
+                <div class="skill-bar" style="width: 70%"></div>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-cloud"></i>
+                <span>Cloud AWS</span>
+                <div class="skill-bar" style="width: 65%"></div>
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-code-branch"></i>
+                <span>CI/CD</span>
+                <div class="skill-bar" style="width: 60%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tools-section">
+        <h2 class="section-title">🛠️ Outils Maîtrisés</h2>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <i class="fab fa-ubuntu"></i>
+            <h3>Debian Server</h3>
+            <p>Administration complète</p>
+          </div>
+          <div class="tool-card">
+            <i class="fas fa-terminal"></i>
+            <h3>Bash Scripting</h3>
+            <p>Automatisation tâches</p>
+          </div>
+          <div class="tool-card">
+            <i class="fas fa-eye"></i>
+            <h3>Wireshark</h3>
+            <p>Analyse réseau</p>
+          </div>
+          <div class="tool-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Nagios</h3>
+            <p>Monitoring</p>
+          </div>
+          <div class="tool-card">
+            <i class="fas fa-lock"></i>
+            <h3>OpenVPN</h3>
+            <p>Réseaux Privés</p>
+          </div>
+          <div class="tool-card">
+            <i class="fas fa-hdd"></i>
+            <h3>RAID/LVM</h3>
+            <p>Gestion stockage</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects-section">
+        <h2 class="section-title">🚀 Projets Réseau Réalisés</h2>
+        <div class="projects-mini">
+          <div class="mini-project">
+            <h4>🏠 Réseau Domestique Sécurisé</h4>
+            <p>Configuration VLAN + Pare-feu + QoS</p>
+          </div>
+          <div class="mini-project">
+            <h4>🏢 VPN Site-to-Site</h4>
+            <p>Interconnexion sécurisée de sites</p>
+          </div>
+          <div class="mini-project">
+            <h4>📡 Serveur Proxy</h4>
+            <p>Squid + Filtrage + Cache</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="page-footer">
+        <a href="elec.html" class="prev-page">
+          <i class="fas fa-arrow-left"></i>
+          <span>Électronique Embarquée</span>
+        </a>
+        <a href="info.html" class="next-page">
+          <i class="fas fa-arrow-right"></i>
+          <span>Développement Informatique</span>
+        </a>
+      </div>
+    </main>
+
+    <script src="/index.js"></script>
+  </body>
+</html>
