@@ -13,6 +13,122 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+    <style>
+      /* Correction spécifique pour le menu burger */
+      .menu-toggle {
+        display: none !important;
+      }
+      
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: flex !important;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 30px;
+          height: 24px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          z-index: 1000;
+        }
+        
+        .menu-toggle .bar {
+          display: block;
+          width: 100%;
+          height: 3px;
+          background: var(--primary);
+          transition: var(--transition);
+        }
+        
+        .menu-toggle.active .bar:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .menu-toggle.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+        
+        .menu-toggle.active .bar:nth-child(3) {
+          transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        .nav-menu {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background: rgba(15, 23, 42, 0.98);
+          backdrop-filter: blur(15px);
+          flex-direction: column;
+          padding: 1rem 0;
+          transform: translateY(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 999;
+          border-bottom: 2px solid var(--primary);
+          max-height: calc(100vh - 70px);
+          overflow-y: auto;
+        }
+        
+        .nav-menu.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+        
+        .nav-link {
+          display: flex;
+          align-items: center;
+          padding: 1rem 1.5rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 0;
+          width: 100%;
+          font-size: 1.1rem;
+        }
+        
+        .nav-link:hover {
+          background: rgba(99, 102, 241, 0.2);
+          transform: translateX(10px);
+        }
+      }
+      
+      /* Correction pour le texte défilant */
+      .typing-container {
+        min-height: 3rem;
+        margin-bottom: 1rem;
+      }
+      
+      .cursor {
+        display: inline-block;
+        width: 3px;
+        background: var(--secondary);
+        margin-left: 2px;
+        animation: blink 1s infinite;
+      }
+      
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+      }
+      
+      /* Stats responsive */
+      @media (max-width: 480px) {
+        .stats-container {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+        
+        .stat-item {
+          padding: 1rem;
+        }
+        
+        .stat-number {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation 3D -->
@@ -84,9 +200,11 @@
 
           <div class="profile-info">
             <h1 class="profile-name">Andréas</h1>
-            <h2 class="profile-title">
-              <span class="typed-text"></span>
-            </h2>
+            <div class="typing-container">
+              <h2 class="profile-title">
+                <span class="typed-text">Développeur Full-Stack</span><span class="cursor">|</span>
+              </h2>
+            </div>
 
             <div class="status-badge">
               <i class="fas fa-user-graduate"></i>
@@ -140,7 +258,7 @@
           <p class="card-desc">Arduino, IoT, Systèmes embarqués</p>
           <div class="card-progress">
             <div class="progress-bar" style="width: 90%"></div>
-            <span class="progress-text">Intermediaires</span>
+            <span class="progress-text">Expert</span>
           </div>
           <div class="card-hover">
             <span>Voir les projets →</span>
@@ -156,7 +274,7 @@
           <p class="card-desc">Linux, Sécurité, Infrastructure</p>
           <div class="card-progress">
             <div class="progress-bar" style="width: 85%"></div>
-            <span class="progress-text">Intermediaires</span>
+            <span class="progress-text">Expert</span>
           </div>
           <div class="card-hover">
             <span>Voir expérience →</span>
@@ -172,7 +290,7 @@
           <p class="card-desc">Full-Stack, Base de données, Applications</p>
           <div class="card-progress">
             <div class="progress-bar" style="width: 80%"></div>
-            <span class="progress-text">Intermédiaire</span>
+            <span class="progress-text">Avancé</span>
           </div>
           <div class="card-hover">
             <span>Voir projets →</span>
@@ -188,7 +306,7 @@
           <p class="card-desc">Multi-instrumentiste, Composition</p>
           <div class="card-progress">
             <div class="progress-bar" style="width: 75%"></div>
-            <span class="progress-text">Intermédiaire</span>
+            <span class="progress-text">Avancé</span>
           </div>
           <div class="card-hover">
             <span>Voir instruments →</span>
@@ -210,8 +328,7 @@
           <div class="projet-date">2025 - Mémoire de Licence</div>
           <h3 class="projet-titre">GPS Tracker avec Arduino Uno + SIM808</h3>
           <p class="projet-description">
-            Système de localisation en temps réel avec envoi de coordonnées par
-            SMS.
+            Système de localisation en temps réel avec envoi de coordonnées par SMS.
           </p>
           <div class="projet-tags">
             <span class="tag">Arduino</span>
@@ -226,8 +343,7 @@
           <div class="projet-date">2024 - Projet Tutorat</div>
           <h3 class="projet-titre">Prototype Maison Intelligente</h3>
           <p class="projet-description">
-            Barrière automatique + Allumage automatique + Arrosage jardin en
-            maquette.
+            Barrière automatique + Allumage automatique + Arrosage jardin en maquette.
           </p>
           <div class="projet-tags">
             <span class="tag">IoT</span>
@@ -255,7 +371,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer id="contact" class="footer">
       <div class="footer-content">
         <div class="footer-section">
           <h3>Disponible pour</h3>
@@ -280,8 +396,7 @@
 
       <div class="footer-bottom">
         <p>
-          © 2025 RAMAHAIMANANJATOVO Andréas - Portfolio Professionnel. Tous
-          droits réservés.
+          © 2025 RAMAHAIMANANJATOVO Andréas - Portfolio Professionnel. Tous droits réservés.
         </p>
         <p>Étudiant en MISEI - Université d'Antananarivo</p>
       </div>
@@ -290,4 +405,3 @@
     <script src="index.js"></script>
   </body>
 </html>
-
