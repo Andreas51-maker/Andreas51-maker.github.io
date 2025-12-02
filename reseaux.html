@@ -10,6 +10,54 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
+      /* Pour les titres et textes longs */
+h1, h2, h3, h4, p, li {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Conteneur principal */
+.container {
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Cible spécifiquement le bloc ORTM */
+.ortm-block {
+  background: #f0f8ff;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #2980b9;
+  margin: 20px 0;
+}
+
+/* Pour les petits écrans */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .ortm-block {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+}
+      
+      
+      
+      
+      
       /* ===== STYLES RÉSEAUX SPÉCIFIQUES ===== */
       .page-content {
         padding: 100px 2rem 4rem;
@@ -916,3 +964,4 @@ journalctl -f -u nginx</code></pre>
     <script src="/index.js"></script>
   </body>
 </html>
+
