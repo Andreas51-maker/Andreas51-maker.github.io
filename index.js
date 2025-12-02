@@ -1,9 +1,86 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("🚀 Portfolio initialisé");
 
-  // ... (tout le code existant reste inchangé jusqu'à la partie stats) ...
+  // 1. NAVIGATION MOBILE
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector(".nav-menu");
+  const navLinks = document.querySelectorAll(".nav-link");
 
-  // 3. ANIMATION STATS (DÉJÀ EXISTANT)
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", function () {
+      console.log("Menu toggle cliqué");
+      this.classList.toggle("active");
+      navMenu.classList.toggle("active");
+      
+      // Bloquer scroll si menu ouvert
+      if (navMenu.classList.contains("active")) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // Fermer menu quand on clique sur un lien
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+          menuToggle.classList.remove("active");
+          navMenu.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+        
+        // Activer le lien cliqué
+        navLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+  }
+
+  // 2. TYPING EFFECT pour le nom "Andréas"
+  const typedText = document.querySelector(".typed-text");
+  if (typedText) {
+    const roles = [
+      "Développeur Full-Stack",
+      "Expert Électronique Embarquée",
+      "Administrateur Réseaux & Système",
+      "Musicien Multi-Instrumentiste",
+      "Étudiant en MISEI - Physique & Applications"
+    ];
+    
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    
+    function type() {
+      const currentRole = roles[roleIndex];
+      
+      if (isDeleting) {
+        typedText.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 50;
+      } else {
+        typedText.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 100;
+      }
+      
+      if (!isDeleting && charIndex === currentRole.length) {
+        isDeleting = true;
+        typingSpeed = 1500;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typingSpeed = 500;
+      }
+      
+      setTimeout(type, typingSpeed);
+    }
+    
+    setTimeout(type, 1000);
+  }
+
+  // 3. ANIMATION STATS
   const stats = document.querySelectorAll(".stat-number");
   if (stats.length > 0) {
     const observer = new IntersectionObserver((entries) => {
@@ -33,17 +110,15 @@ document.addEventListener("DOMContentLoaded", function () {
     stats.forEach(stat => observer.observe(stat));
   }
 
-  // NOUVELLE SECTION: ANIMATION DES BARRES DE COMPÉTENCES RÉSEAU
+  // 4. ANIMATION DES BARRES DE COMPÉTENCES RÉSEAUX
   const skillBars = document.querySelectorAll(".skill-bar");
   if (skillBars.length > 0) {
     const skillObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const width = entry.target.style.width;
-          entry.target.style.transition = "width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1)";
+          const width = entry.target.getAttribute("data-width") + "%";
           entry.target.style.width = width;
           
-          // Ajouter un effet de remplissage progressif
           setTimeout(() => {
             entry.target.classList.add("animated");
           }, 300);
@@ -54,81 +129,53 @@ document.addEventListener("DOMContentLoaded", function () {
     }, { threshold: 0.3, rootMargin: "0px 0px -50px 0px" });
     
     skillBars.forEach(bar => {
-      bar.style.width = "0%"; // Initialiser à 0 pour l'animation
+      bar.style.width = "0%";
       skillObserver.observe(bar);
     });
   }
 
-  // ANIMATION DES CARTES D'OUTILS
-  const toolCards = document.querySelectorAll(".tool-card");
-  if (toolCards.length > 0) {
-    const toolObserver = new IntersectionObserver((entries) => {
+  // 5. ANIMATION DES PROGRESS BARS
+  const progressFills = document.querySelectorAll(".progress-fill, .project-bar");
+  if (progressFills.length > 0) {
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const width = entry.target.getAttribute("data-width") + "%";
+          entry.target.style.width = width;
+          progressObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    progressFills.forEach(fill => {
+      fill.style.width = "0%";
+      progressObserver.observe(fill);
+    });
+  }
+
+  // 6. ANIMATION AU SCROLL
+  const animatedElements = document.querySelectorAll(".specialite-card, .projet-slide, .level-category, .tool-card, .mini-project, .stat-card, .skill-card, .language-card, .framework-card");
+  if (animatedElements.length > 0) {
+    const scrollObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0) scale(1)";
+            entry.target.style.transform = "translateY(0)";
             entry.target.style.transition = "opacity 0.6s ease, transform 0.6s ease";
           }, index * 100);
         }
       });
     }, { threshold: 0.1 });
     
-    toolCards.forEach((card, index) => {
-      card.style.opacity = "0";
-      card.style.transform = "translateY(30px) scale(0.95)";
-      card.style.transitionDelay = `${index * 0.1}s`;
-      toolObserver.observe(card);
+    animatedElements.forEach(el => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      scrollObserver.observe(el);
     });
   }
 
-  // ANIMATION DES NIVEAUX DE COMPÉTENCES
-  const levelCategories = document.querySelectorAll(".level-category");
-  if (levelCategories.length > 0) {
-    const levelObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateX(0)";
-            entry.target.classList.add("visible");
-          }, index * 200);
-        }
-      });
-    }, { threshold: 0.2 });
-    
-    levelCategories.forEach((category, index) => {
-      category.style.opacity = "0";
-      category.style.transform = index % 2 === 0 ? "translateX(-30px)" : "translateX(30px)";
-      category.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-      levelObserver.observe(category);
-    });
-  }
-
-  // ANIMATION DES PROJETS MINI
-  const miniProjects = document.querySelectorAll(".mini-project");
-  if (miniProjects.length > 0) {
-    const projectObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-            entry.target.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-          }, index * 150);
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    miniProjects.forEach((project, index) => {
-      project.style.opacity = "0";
-      project.style.transform = "translateY(20px)";
-      project.style.transitionDelay = `${index * 0.1}s`;
-      projectObserver.observe(project);
-    });
-  }
-
-  // EFFET 3D SUR LES CARTES D'EXPÉRIENCE (EXISTANT)
+  // 7. EFFET 3D SUR LES CARTES
   const cards = document.querySelectorAll(".card-3d");
   cards.forEach(card => {
     card.addEventListener("mousemove", function(e) {
@@ -152,7 +199,119 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // ... (le reste du code existant reste inchangé) ...
+  // 8. SLIDER PROJETS
+  const slider = document.querySelector(".projets-slider");
+  if (slider) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    
+    slider.addEventListener("mousedown", (e) => {
+      isDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    
+    slider.addEventListener("mouseleave", () => {
+      isDown = false;
+    });
+    
+    slider.addEventListener("mouseup", () => {
+      isDown = false;
+    });
+    
+    slider.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+    
+    // Touch support
+    slider.addEventListener("touchstart", (e) => {
+      isDown = true;
+      startX = e.touches[0].pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    
+    slider.addEventListener("touchend", () => {
+      isDown = false;
+    });
+    
+    slider.addEventListener("touchmove", (e) => {
+      if (!isDown) return;
+      const x = e.touches[0].pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  }
+
+  // 9. NAVIGATION ACTIVE AU SCROLL (index.html seulement)
+  if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
+    window.addEventListener("scroll", function() {
+      if (window.innerWidth > 768) {
+        const sections = document.querySelectorAll("section[id]");
+        let current = "";
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.clientHeight;
+          
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            current = section.getAttribute("id");
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  }
+
+  // 10. FERMER MENU QUAND ON CLIQUE DEHORS
+  document.addEventListener("click", function(e) {
+    if (window.innerWidth <= 768 && 
+        navMenu && 
+        navMenu.classList.contains("active") &&
+        !navMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)) {
+      menuToggle.classList.remove("active");
+      navMenu.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  // 11. FERMER MENU QUAND ON REDIMENSIONNE
+  window.addEventListener("resize", function() {
+    if (window.innerWidth > 768 && navMenu) {
+      menuToggle.classList.remove("active");
+      navMenu.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  // 12. SMOOTH SCROLL POUR ANCRES
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 70,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
 
   console.log("✅ Toutes les fonctionnalités chargées");
 });
