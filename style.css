@@ -807,4 +807,352 @@ body {
     padding: 1rem 0 0;
   }
 }
+/* AJOUTE CES RÈGLES RESPONSIVE À LA FIN DE TON FICHIER CSS EXISTANT */
+
+/* ============================================
+   RESPONSIVE DESIGN COMPLET
+   Sans modifier les classes/id existants
+   ============================================ */
+
+/* 1. NAVBAR RESPONSIVE */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 0;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+        padding: 1rem 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
+        border-bottom: 2px solid var(--primary);
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0;
+        width: 100%;
+        font-size: 1.1rem;
+    }
+    
+    .nav-link:hover {
+        background: rgba(99, 102, 241, 0.2);
+        transform: translateX(10px);
+    }
+    
+    .nav-link i {
+        width: 24px;
+        text-align: center;
+        margin-right: 1rem;
+    }
+    
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1000;
+    }
+    
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    .bar {
+        width: 100%;
+        height: 3px;
+        background: var(--primary);
+        transition: all 0.3s ease;
+    }
+}
+
+/* 2. SECTION HERO RESPONSIVE */
+@media (max-width: 1024px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+        padding: 0 1rem;
+    }
+    
+    .cube-3d {
+        width: 150px;
+        height: 150px;
+        order: 1;
+        margin: 0 auto;
+    }
+    
+    .cube-face {
+        font-size: 2rem;
+    }
+    
+    .cube-face.front { transform: translateZ(75px); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(75px); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(75px); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(75px); }
+    .cube-face.top { transform: rotateX(90deg) translateZ(75px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(75px); }
+    
+    .profile-card {
+        order: 2;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* 3. PETITS ÉCRANS (MOBILE) */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 5rem 1rem 3rem;
+        min-height: auto;
+    }
+    
+    .profile-name {
+        font-size: 2rem;
+    }
+    
+    .profile-title {
+        font-size: 1rem;
+        min-height: 1.5rem;
+    }
+    
+    .profile-image-container {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+/* 4. SECTION SPÉCIALITÉS RESPONSIVE */
+@media (max-width: 768px) {
+    .specialites-section {
+        padding: 4rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+    
+    .specialites-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .specialite-card {
+        padding: 1.5rem;
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+    }
+}
+
+/* 5. SECTION PROJETS RESPONSIVE */
+@media (max-width: 768px) {
+    .projets-section {
+        padding: 4rem 1rem;
+    }
+    
+    .projets-slider {
+        padding: 0.5rem 0;
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+    
+    .projets-slider::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .projet-slide {
+        min-width: 280px;
+        padding: 1.5rem;
+    }
+}
+
+/* 6. FOOTER RESPONSIVE */
+@media (max-width: 768px) {
+    .footer {
+        padding: 3rem 1rem 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .github-link {
+        justify-content: center;
+    }
+    
+    .footer-bottom {
+        font-size: 0.8rem;
+        padding-top: 1.5rem;
+    }
+}
+
+/* 7. TABLETTES (ÉCRAN MOYEN) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .specialites-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero-container {
+        gap: 2rem;
+        padding: 0 2rem;
+    }
+    
+    .cube-3d {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .cube-face.front { transform: translateZ(90px); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(90px); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(90px); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(90px); }
+    .cube-face.top { transform: rotateX(90deg) translateZ(90px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(90px); }
+}
+
+/* 8. SUPPORT TOUCH ÉCRAN */
+@media (hover: none) and (pointer: coarse) {
+    .specialite-card:hover {
+        transform: none !important;
+    }
+    
+    .card-3d:hover {
+        transform: none !important;
+    }
+    
+    .nav-link:hover {
+        transform: none;
+    }
+    
+    .projet-slide:hover {
+        transform: none;
+    }
+    
+    /* Agrandir les zones cliquables pour mobile */
+    .nav-link,
+    .specialite-card,
+    .menu-toggle {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* 9. ORIENTATION PAYSAGE MOBILE */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto;
+        padding: 4rem 1rem 2rem;
+    }
+    
+    .nav-menu {
+        max-height: 60vh;
+    }
+    
+    .cube-3d {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .cube-face.front { transform: translateZ(60px); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(60px); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(60px); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(60px); }
+    .cube-face.top { transform: rotateX(90deg) translateZ(60px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(60px); }
+}
+
+/* 10. ANIMATIONS MOBILE OPTIMISÉES */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 11. CORRECTION DU SCROLL SMOOTH POUR MOBILE */
+@media (max-width: 768px) {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 70px; /* Hauteur de la navbar */
+    }
+}
+
+/* 12. CORRECTION CONTACT FOOTER */
+/* Le lien Contact dans la navbar va maintenant vers #contact qui est le footer */
+/* Ajout d'un padding au footer pour éviter que le contenu soit caché sous la navbar */
+.footer {
+    scroll-margin-top: 70px;
+}
+
+/* 13. AJUSTEMENTS POUR TRÈS GRANDS ÉCRANS */
+@media (min-width: 1600px) {
+    .nav-container,
+    .hero-container,
+    .specialites-section,
+    .projets-section,
+    .footer-content {
+        max-width: 1400px;
+    }
+   }
 
