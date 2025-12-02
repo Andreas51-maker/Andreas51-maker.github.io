@@ -1,6 +1,6 @@
 /**
  * PORTFOLIO TOP 2025 - SCRIPT PRINCIPAL
- * Author: [Votre Nom]
+ * Author: Andréas 
  * Version: 1.0
  * Date: 2025
  *
@@ -412,3 +412,4 @@ const PortfolioAPI = {
 window.PortfolioAPI = PortfolioAPI;
 
 console.log("✅ Portfolio 2025 - Toutes les fonctionnalités sont chargées");
+
