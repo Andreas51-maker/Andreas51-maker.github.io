@@ -9,6 +9,104 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <style>
+      /* Styles supplémentaires pour les animations réseau */
+      .skill-bar {
+        height: 8px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 4px;
+        margin-top: 8px;
+        transition: width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .skill-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--secondary), #ffffff);
+        animation: shimmer 2s infinite;
+        opacity: 0.3;
+      }
+      
+      .skill-bar.animated::after {
+        width: 100%;
+      }
+      
+      @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+      
+      .skill-item {
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeInUp 0.6s ease forwards;
+      }
+      
+      .skill-item:nth-child(1) { animation-delay: 0.1s; }
+      .skill-item:nth-child(2) { animation-delay: 0.2s; }
+      .skill-item:nth-child(3) { animation-delay: 0.3s; }
+      
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .tool-card {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        transition: all 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+      
+      .tool-card:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+      
+      .level-category {
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: all 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+      
+      .level-category:nth-child(even) {
+        transform: translateX(30px);
+      }
+      
+      .level-category.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      .mini-project {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+      }
+      
+      .experience-details {
+        animation: slideIn 0.8s ease-out;
+      }
+      
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar">
@@ -91,45 +189,51 @@ journalctl -f -u nginx</code></pre>
         <h2 class="section-title">📊 Compétences Niveau par Niveau</h2>
 
         <div class="level-grid">
-          <!-- Niveau intermediaires -->
+          <!-- Niveau Expert -->
           <div class="level-category">
-            <h3 class="level-title expert">intermediaires</h3>
+            <h3 class="level-title expert">Expert</h3>
             <div class="level-skills">
               <div class="skill-item">
                 <i class="fab fa-linux"></i>
                 <span>Administration Linux</span>
+                <div class="skill-percentage">95%</div>
                 <div class="skill-bar" style="width: 95%"></div>
               </div>
               <div class="skill-item">
                 <i class="fas fa-shield-alt"></i>
                 <span>Sécurité Réseau</span>
+                <div class="skill-percentage">90%</div>
                 <div class="skill-bar" style="width: 90%"></div>
               </div>
               <div class="skill-item">
                 <i class="fas fa-fire"></i>
                 <span>Configuration iptables</span>
+                <div class="skill-percentage">92%</div>
                 <div class="skill-bar" style="width: 92%"></div>
               </div>
             </div>
           </div>
 
-          <!-- Niveau intermediaires -->
+          <!-- Niveau Avancé -->
           <div class="level-category">
-            <h3 class="level-title advanced">INTERMEDIAIRES</h3>
+            <h3 class="level-title advanced">Avancé</h3>
             <div class="level-skills">
               <div class="skill-item">
                 <i class="fas fa-server"></i>
                 <span>Virtualisation</span>
+                <div class="skill-percentage">80%</div>
                 <div class="skill-bar" style="width: 80%"></div>
               </div>
               <div class="skill-item">
                 <i class="fas fa-network-wired"></i>
                 <span>Topologie Réseau</span>
+                <div class="skill-percentage">85%</div>
                 <div class="skill-bar" style="width: 85%"></div>
               </div>
               <div class="skill-item">
                 <i class="fas fa-database"></i>
                 <span>Services DNS/DHCP</span>
+                <div class="skill-percentage">78%</div>
                 <div class="skill-bar" style="width: 78%"></div>
               </div>
             </div>
@@ -137,21 +241,24 @@ journalctl -f -u nginx</code></pre>
 
           <!-- Niveau Intermédiaire -->
           <div class="level-category">
-            <h3 class="level-title intermediate">INTERMÉDIAIRE</h3>
+            <h3 class="level-title intermediate">Intermédiaire</h3>
             <div class="level-skills">
               <div class="skill-item">
                 <i class="fab fa-docker"></i>
                 <span>Docker</span>
+                <div class="skill-percentage">70%</div>
                 <div class="skill-bar" style="width: 70%"></div>
               </div>
               <div class="skill-item">
                 <i class="fas fa-cloud"></i>
                 <span>Cloud AWS</span>
+                <div class="skill-percentage">65%</div>
                 <div class="skill-bar" style="width: 65%"></div>
               </div>
               <div class="skill-item">
                 <i class="fas fa-code-branch"></i>
                 <span>CI/CD</span>
+                <div class="skill-percentage">60%</div>
                 <div class="skill-bar" style="width: 60%"></div>
               </div>
             </div>
@@ -166,31 +273,37 @@ journalctl -f -u nginx</code></pre>
             <i class="fab fa-ubuntu"></i>
             <h3>Debian Server</h3>
             <p>Administration complète</p>
+            <div class="tool-percentage">95%</div>
           </div>
           <div class="tool-card">
             <i class="fas fa-terminal"></i>
             <h3>Bash Scripting</h3>
             <p>Automatisation tâches</p>
+            <div class="tool-percentage">88%</div>
           </div>
           <div class="tool-card">
             <i class="fas fa-eye"></i>
             <h3>Wireshark</h3>
             <p>Analyse réseau</p>
+            <div class="tool-percentage">82%</div>
           </div>
           <div class="tool-card">
             <i class="fas fa-chart-line"></i>
             <h3>Nagios</h3>
             <p>Monitoring</p>
+            <div class="tool-percentage">75%</div>
           </div>
           <div class="tool-card">
             <i class="fas fa-lock"></i>
             <h3>OpenVPN</h3>
             <p>Réseaux Privés</p>
+            <div class="tool-percentage">85%</div>
           </div>
           <div class="tool-card">
             <i class="fas fa-hdd"></i>
             <h3>RAID/LVM</h3>
             <p>Gestion stockage</p>
+            <div class="tool-percentage">78%</div>
           </div>
         </div>
       </section>
@@ -199,19 +312,68 @@ journalctl -f -u nginx</code></pre>
         <h2 class="section-title">🚀 Projets Réseau Réalisés</h2>
         <div class="projects-mini">
           <div class="mini-project">
+            <div class="project-icon">
+              <i class="fas fa-home"></i>
+            </div>
             <h4>🏠 Réseau Domestique Sécurisé</h4>
             <p>Configuration VLAN + Pare-feu + QoS</p>
+            <div class="project-progress">
+              <div class="progress-bar" style="width: 100%"></div>
+            </div>
           </div>
           <div class="mini-project">
+            <div class="project-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
             <h4>🏢 VPN Site-to-Site</h4>
             <p>Interconnexion sécurisée de sites</p>
+            <div class="project-progress">
+              <div class="progress-bar" style="width: 90%"></div>
+            </div>
           </div>
           <div class="mini-project">
+            <div class="project-icon">
+              <i class="fas fa-server"></i>
+            </div>
             <h4>📡 Serveur Proxy</h4>
             <p>Squid + Filtrage + Cache</p>
+            <div class="project-progress">
+              <div class="progress-bar" style="width: 95%"></div>
+            </div>
           </div>
         </div>
       </section>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-server"></i>
+          </div>
+          <div class="stat-number" data-count="50">0</div>
+          <div class="stat-label">Serveurs Configurés</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="stat-number" data-count="200">0</div>
+          <div class="stat-label">Règles de Sécurité</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <div class="stat-number" data-count="24">0</div>
+          <div class="stat-label">Heures Monitoring</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="stat-number" data-count="30">0</div>
+          <div class="stat-label">Scripts Bash</div>
+        </div>
+      </div>
 
       <div class="page-footer">
         <a href="elec.html" class="prev-page">
@@ -225,6 +387,38 @@ journalctl -f -u nginx</code></pre>
       </div>
     </main>
 
+    <script>
+      // Initialisation des animations au chargement
+      document.addEventListener('DOMContentLoaded', function() {
+        // Animation des barres de compétences
+        const skillItems = document.querySelectorAll('.skill-item');
+        skillItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.style.animationDelay = `${index * 0.1}s`;
+            item.style.animation = 'fadeInUp 0.6s ease forwards';
+          }, 300);
+        });
+        
+        // Animation des sections au scroll
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+          section.style.opacity = '0';
+          section.style.transform = 'translateY(20px)';
+          section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(section);
+        });
+      });
+    </script>
+    
     <script src="/index.js"></script>
   </body>
-</html>
+              </html>
