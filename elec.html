@@ -9,6 +9,358 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <style>
+      /* ===== STYLES ELEC SPÉCIFIQUES ===== */
+      .page-content {
+        padding: 100px 2rem 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .page-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        animation: fadeInDown 0.8s ease;
+      }
+      
+      .page-header h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--gray);
+        margin-bottom: 2rem;
+      }
+      
+      /* ===== SECTION PROJET ===== */
+      .project-section {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 2.5rem;
+        margin-bottom: 4rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: var(--shadow-3d);
+        transform-style: preserve-3d;
+        transition: var(--transition);
+      }
+      
+      .project-section:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+      
+      .section-title {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--light);
+      }
+      
+      .project-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      
+      .date-badge, .tech-badge {
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      
+      .date-badge {
+        background: rgba(99, 102, 241, 0.2);
+        color: var(--primary);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+      }
+      
+      .tech-badge {
+        background: rgba(16, 185, 129, 0.2);
+        color: var(--secondary);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+      
+      .project-details {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+      
+      .project-details.reverse {
+        grid-template-columns: 1fr 300px;
+      }
+      
+      .project-image {
+        width: 100%;
+      }
+      
+      .image-placeholder {
+        width: 100%;
+        height: 250px;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid rgba(99, 102, 241, 0.3);
+        transition: var(--transition);
+      }
+      
+      .image-placeholder:hover {
+        transform: scale(1.05);
+        border-color: var(--accent);
+      }
+      
+      .image-placeholder i {
+        font-size: 4rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+      
+      .project-description h3 {
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        color: var(--light);
+      }
+      
+      .project-description ul {
+        list-style: none;
+        margin: 1.5rem 0;
+      }
+      
+      .project-description li {
+        padding: 0.8rem 0;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      .project-description li i {
+        margin-right: 1rem;
+        color: var(--primary);
+        width: 20px;
+      }
+      
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      
+      .tech-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 50px;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+      }
+      
+      .tech-item i {
+        color: var(--primary);
+      }
+      
+      .components-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      
+      .component {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: var(--transition);
+      }
+      
+      .component:hover {
+        transform: translateY(-3px);
+        border-color: var(--primary);
+      }
+      
+      .component i {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+      
+      /* ===== SECTION COMPÉTENCES ===== */
+      .skills-section {
+        margin-bottom: 4rem;
+      }
+      
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      
+      .skill-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transform-style: preserve-3d;
+        transition: var(--transition);
+      }
+      
+      .skill-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+      }
+      
+      .skill-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: var(--light);
+        border-bottom: 2px solid var(--primary);
+        padding-bottom: 0.5rem;
+      }
+      
+      .skill-card ul {
+        list-style: none;
+      }
+      
+      .skill-card li {
+        padding: 0.5rem 0;
+        color: var(--gray);
+        display: flex;
+        align-items: center;
+      }
+      
+      .skill-card li::before {
+        content: "▸";
+        color: var(--primary);
+        margin-right: 0.5rem;
+        font-weight: bold;
+      }
+      
+      /* ===== NAVIGATION PAGES ===== */
+      .page-footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .next-page {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 10px;
+        color: var(--light);
+        text-decoration: none;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        transition: var(--transition);
+      }
+      
+      .next-page:hover {
+        background: rgba(99, 102, 241, 0.2);
+        transform: translateY(-3px);
+      }
+      
+      /* ===== ANIMATIONS ===== */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .page-content {
+          padding: 80px 1rem 2rem;
+        }
+        
+        .page-header h1 {
+          font-size: 2.2rem;
+        }
+        
+        .project-details, .project-details.reverse {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        
+        .project-image {
+          order: 2;
+        }
+        
+        .project-description {
+          order: 1;
+        }
+        
+        .image-placeholder {
+          width: 250px;
+          height: 200px;
+          margin: 0 auto;
+        }
+        
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .tech-stack, .components-grid {
+          justify-content: center;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .image-placeholder {
+          width: 100%;
+          height: 180px;
+        }
+        
+        .project-section {
+          padding: 1.5rem;
+        }
+        
+        .project-meta {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        .tech-stack {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        .tech-item {
+          width: 100%;
+          justify-content: center;
+        }
+        
+        .components-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar">
@@ -21,6 +373,11 @@
             <i class="fas fa-arrow-left"></i> Retour
           </a>
         </div>
+        <button class="menu-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
       </div>
     </nav>
 
@@ -44,7 +401,6 @@
 
         <div class="project-details">
           <div class="project-image">
-            <!-- Remplacez par votre image -->
             <div class="image-placeholder">
               <i class="fas fa-satellite"></i>
             </div>
@@ -57,11 +413,11 @@
               fonctionnalités suivantes :
             </p>
             <ul>
-              <li>📍 Localisation précise via module GPS</li>
-              <li>📱 Envoi des coordonnées par SMS (SIM808)</li>
-              <li>🔋 Gestion d'énergie optimisée</li>
-              <li>📊 Interface de monitoring web</li>
-              <li>🚨 Alerte géolocalisée</li>
+              <li><i class="fas fa-map-marker-alt"></i> Localisation précise via module GPS</li>
+              <li><i class="fas fa-sms"></i> Envoi des coordonnées par SMS (SIM808)</li>
+              <li><i class="fas fa-battery-full"></i> Gestion d'énergie optimisée</li>
+              <li><i class="fas fa-desktop"></i> Interface de monitoring web</li>
+              <li><i class="fas fa-bell"></i> Alerte géolocalisée</li>
             </ul>
 
             <h3>Technologies Utilisées</h3>
@@ -79,8 +435,8 @@
                 <span>C</span>
               </div>
               <div class="tech-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>SIM808</span>
+                <i class="fas fa-map-marked-alt"></i>
+                <span>GPS</span>
               </div>
             </div>
           </div>
@@ -102,19 +458,16 @@
             <h3>Systèmes Implémentés</h3>
             <ul>
               <li>
-                <strong>Barrière Automatique :</strong> Détection véhicule +
-                commande moteur
+                <i class="fas fa-gate"></i> <strong>Barrière Automatique :</strong> Détection véhicule + commande moteur
               </li>
               <li>
-                <strong>Allumage Automatique :</strong> Détection présence +
-                luminosité
+                <i class="fas fa-lightbulb"></i> <strong>Allumage Automatique :</strong> Détection présence + luminosité
               </li>
               <li>
-                <strong>Arrosage Jardin :</strong> Programmation + capteur
-                humidité
+                <i class="fas fa-tint"></i> <strong>Arrosage Jardin :</strong> Programmation + capteur humidité
               </li>
               <li>
-                <strong>Sécurité :</strong> Alarme intrusion + notification
+                <i class="fas fa-shield-alt"></i> <strong>Sécurité :</strong> Alarme intrusion + notification
               </li>
             </ul>
 
@@ -131,6 +484,10 @@
               <div class="component">
                 <i class="fas fa-tint"></i>
                 <span>Capteur Humidité</span>
+              </div>
+              <div class="component">
+                <i class="fas fa-broadcast-tower"></i>
+                <span>Module RF</span>
               </div>
             </div>
           </div>
@@ -150,17 +507,20 @@
           <div class="skill-card">
             <h3>Microcontrôleurs</h3>
             <ul>
-              <li>Arduino (intermediaires)</li>
-              <li>ESP32 (intermediaires)</li>
+              <li>Arduino (Expert)</li>
+              <li>ESP32 (Avancé)</li>
+              <li>Raspberry Pi (Intermédiaire)</li>
+              <li>STM32 (Débutant)</li>
             </ul>
           </div>
 
           <div class="skill-card">
             <h3>Programmation</h3>
             <ul>
-              <li>C (intermediaires)</li>
-              <li>Python IoT (intermediaires)</li>
+              <li>C (Avancé)</li>
+              <li>Python IoT (Avancé)</li>
               <li>Assembleur (Base)</li>
+              <li>Arduino IDE (Expert)</li>
             </ul>
           </div>
 
@@ -171,6 +531,8 @@
               <li>UART</li>
               <li>MQTT</li>
               <li>WebSocket</li>
+              <li>Bluetooth</li>
+              <li>Wi-Fi</li>
             </ul>
           </div>
         </div>
