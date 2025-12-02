@@ -10,15 +10,254 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
-      /* Styles supplémentaires pour les animations réseau */
-      .skill-bar {
+      /* ===== STYLES RÉSEAUX SPÉCIFIQUES ===== */
+      .page-content {
+        padding: 100px 2rem 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .page-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        animation: fadeInDown 0.8s ease;
+      }
+      
+      .page-header h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--gray);
+        margin-bottom: 2rem;
+      }
+      
+      /* ===== SECTION EXPÉRIENCE ===== */
+      .experience-section {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 2.5rem;
+        margin-bottom: 4rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: var(--shadow-3d);
+        transform-style: preserve-3d;
+        transition: var(--transition);
+      }
+      
+      .experience-section:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+      }
+      
+      .section-title {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--light);
+      }
+      
+      .experience-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      
+      .date-badge, .role-badge, .location-badge {
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      
+      .date-badge {
+        background: rgba(99, 102, 241, 0.2);
+        color: var(--primary);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+      }
+      
+      .role-badge {
+        background: rgba(16, 185, 129, 0.2);
+        color: var(--secondary);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+      
+      .location-badge {
+        background: rgba(245, 158, 11, 0.2);
+        color: var(--accent);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      
+      .experience-details {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+      
+      .company-logo {
+        width: 150px;
+      }
+      
+      .logo-placeholder {
+        width: 120px;
+        height: 120px;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid rgba(99, 102, 241, 0.3);
+      }
+      
+      .logo-placeholder i {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+      
+      .experience-description h3 {
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        color: var(--light);
+      }
+      
+      .experience-description ul {
+        list-style: none;
+        margin: 1.5rem 0;
+      }
+      
+      .experience-description li {
+        padding: 0.5rem 0;
+        display: flex;
+        align-items: center;
+      }
+      
+      .experience-description li i {
+        margin-right: 1rem;
+        color: var(--primary);
+        width: 20px;
+      }
+      
+      .code-snippet {
+        background: #1a1a2e;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-left: 4px solid var(--primary);
+        overflow-x: auto;
+      }
+      
+      .code-snippet pre {
+        margin: 0;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      
+      .code-snippet code {
+        color: #8be9fd;
+      }
+      
+      /* ===== SECTION COMPÉTENCES ===== */
+      .skills-section {
+        margin-bottom: 4rem;
+      }
+      
+      .level-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      
+      .level-category {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transform-style: preserve-3d;
+        transition: var(--transition);
+      }
+      
+      .level-category:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+      }
+      
+      .level-title {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid;
+      }
+      
+      .level-title.expert {
+        color: var(--secondary);
+        border-color: var(--secondary);
+      }
+      
+      .level-title.advanced {
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+      
+      .level-title.intermediate {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+      
+      .skill-item {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      .skill-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+      
+      .skill-name {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 500;
+      }
+      
+      .skill-percentage {
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      
+      .skill-progress {
         height: 8px;
-        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 4px;
-        margin-top: 8px;
-        transition: width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-        position: relative;
         overflow: hidden;
+        margin-top: 0.5rem;
+      }
+      
+      .skill-bar {
+        height: 100%;
+        border-radius: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        width: 0;
+        transition: width 1.5s ease-out;
+        position: relative;
       }
       
       .skill-bar::after {
@@ -26,15 +265,233 @@
         position: absolute;
         top: 0;
         left: 0;
-        height: 100%;
-        width: 0%;
-        background: linear-gradient(90deg, var(--secondary), #ffffff);
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         animation: shimmer 2s infinite;
-        opacity: 0.3;
       }
       
-      .skill-bar.animated::after {
-        width: 100%;
+      /* ===== SECTION OUTILS ===== */
+      .tools-section {
+        margin-bottom: 4rem;
+      }
+      
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      
+      .tool-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transform-style: preserve-3d;
+        transition: var(--transition);
+      }
+      
+      .tool-card:hover {
+        transform: translateY(-10px) rotateX(5deg);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--primary);
+      }
+      
+      .tool-card i {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+      
+      .tool-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .tool-card p {
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      
+      .tool-progress {
+        height: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-top: 0.5rem;
+      }
+      
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 3px;
+        width: 0;
+        transition: width 1.5s ease-out;
+      }
+      
+      /* ===== SECTION PROJETS ===== */
+      .projects-section {
+        margin-bottom: 4rem;
+      }
+      
+      .projects-mini {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      
+      .mini-project {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: var(--transition);
+      }
+      
+      .mini-project:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+      }
+      
+      .project-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      
+      .project-icon i {
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+      
+      .mini-project h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .mini-project p {
+        color: var(--gray);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      
+      .project-progress {
+        height: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      
+      .project-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 3px;
+        width: 0;
+        transition: width 1.5s ease-out;
+      }
+      
+      /* ===== SECTION STATS ===== */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 4rem 0;
+      }
+      
+      .stat-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: var(--transition);
+      }
+      
+      .stat-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+      }
+      
+      .stat-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+      }
+      
+      .stat-icon i {
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+      
+      .stat-number {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 0.5rem;
+      }
+      
+      .stat-label {
+        color: var(--gray);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      /* ===== NAVIGATION PAGES ===== */
+      .page-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .prev-page, .next-page {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 10px;
+        color: var(--light);
+        text-decoration: none;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        transition: var(--transition);
+      }
+      
+      .prev-page:hover, .next-page:hover {
+        background: rgba(99, 102, 241, 0.2);
+        transform: translateY(-3px);
+      }
+      
+      /* ===== ANIMATIONS ===== */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
       
       @keyframes shimmer {
@@ -42,68 +499,69 @@
         100% { transform: translateX(100%); }
       }
       
-      .skill-item {
-        margin-bottom: 1.5rem;
-        opacity: 0;
-        transform: translateY(10px);
-        animation: fadeInUp 0.6s ease forwards;
-      }
-      
-      .skill-item:nth-child(1) { animation-delay: 0.1s; }
-      .skill-item:nth-child(2) { animation-delay: 0.2s; }
-      .skill-item:nth-child(3) { animation-delay: 0.3s; }
-      
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .page-content {
+          padding: 80px 1rem 2rem;
+        }
+        
+        .page-header h1 {
+          font-size: 2.2rem;
+        }
+        
+        .experience-details {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        
+        .company-logo {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+        
+        .level-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .tools-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .projects-mini {
+          grid-template-columns: 1fr;
+        }
+        
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .page-footer {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        .prev-page, .next-page {
+          justify-content: center;
         }
       }
       
-      .tool-card {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-        transition: all 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-      }
-      
-      .tool-card:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-      }
-      
-      .level-category {
-        opacity: 0;
-        transform: translateX(-30px);
-        transition: all 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
-      }
-      
-      .level-category:nth-child(even) {
-        transform: translateX(30px);
-      }
-      
-      .level-category.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      
-      .mini-project {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s ease;
-      }
-      
-      .experience-details {
-        animation: slideIn 0.8s ease-out;
-      }
-      
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
+      @media (max-width: 480px) {
+        .tools-grid {
+          grid-template-columns: 1fr;
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
+        
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .experience-section {
+          padding: 1.5rem;
+        }
+        
+        .experience-meta {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
     </style>
@@ -119,6 +577,11 @@
             <i class="fas fa-arrow-left"></i> Retour
           </a>
         </div>
+        <button class="menu-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
       </div>
     </nav>
 
@@ -136,15 +599,12 @@
         <h2 class="section-title">🏢 Stage ORTM Madagascar</h2>
         <div class="experience-meta">
           <span class="date-badge">2025 - 3 mois</span>
-          <span class="role-badge"
-            >Administrateur Réseaux & Système Stagiaire</span
-          >
+          <span class="role-badge">Administrateur Réseaux & Système Stagiaire</span>
           <span class="location-badge">Anosy, Antananarivo</span>
         </div>
 
         <div class="experience-details">
           <div class="company-logo">
-            <!-- Logo ORTM -->
             <div class="logo-placeholder">
               <i class="fas fa-tv"></i>
               <p>ORTM Madagascar</p>
@@ -159,11 +619,11 @@
             </p>
 
             <ul>
-              <li>🔧 Configuration pare-feu Linux (iptables)</li>
-              <li>🌐 Blocage de sites non-productifs</li>
-              <li>📊 Analyse du trafic réseau</li>
-              <li>🛡️ Renforcement sécurité réseau</li>
-              <li>📋 Documentation des procédures</li>
+              <li><i class="fas fa-wrench"></i> Configuration pare-feu Linux (iptables)</li>
+              <li><i class="fas fa-globe"></i> Blocage de sites non-productifs</li>
+              <li><i class="fas fa-chart-bar"></i> Analyse du trafic réseau</li>
+              <li><i class="fas fa-shield-alt"></i> Renforcement sécurité réseau</li>
+              <li><i class="fas fa-file-alt"></i> Documentation des procédures</li>
             </ul>
 
             <h3>Commandes Linux Utilisées</h3>
@@ -194,22 +654,40 @@ journalctl -f -u nginx</code></pre>
             <h3 class="level-title expert">Expert</h3>
             <div class="level-skills">
               <div class="skill-item">
-                <i class="fab fa-linux"></i>
-                <span>Administration Linux</span>
-                <div class="skill-percentage">95%</div>
-                <div class="skill-bar" style="width: 95%"></div>
+                <div class="skill-header">
+                  <div class="skill-name">
+                    <i class="fab fa-linux"></i>
+                    <span>Administration Linux</span>
+                  </div>
+                  <span class="skill-percentage">95%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-bar" data-width="95"></div>
+                </div>
               </div>
               <div class="skill-item">
-                <i class="fas fa-shield-alt"></i>
-                <span>Sécurité Réseau</span>
-                <div class="skill-percentage">90%</div>
-                <div class="skill-bar" style="width: 90%"></div>
+                <div class="skill-header">
+                  <div class="skill-name">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Sécurité Réseau</span>
+                  </div>
+                  <span class="skill-percentage">90%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-bar" data-width="90"></div>
+                </div>
               </div>
               <div class="skill-item">
-                <i class="fas fa-fire"></i>
-                <span>Configuration iptables</span>
-                <div class="skill-percentage">92%</div>
-                <div class="skill-bar" style="width: 92%"></div>
+                <div class="skill-header">
+                  <div class="skill-name">
+                    <i class="fas fa-fire"></i>
+                    <span>Configuration iptables</span>
+                  </div>
+                  <span class="skill-percentage">92%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-bar" data-width="92"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -219,47 +697,83 @@ journalctl -f -u nginx</code></pre>
             <h3 class="level-title advanced">Avancé</h3>
             <div class="level-skills">
               <div class="skill-item">
-                <i class="fas fa-server"></i>
-                <span>Virtualisation</span>
-                <div class="skill-percentage">80%</div>
-                <div class="skill-bar" style="width: 80%"></div>
+                <div class="skill-header">
+                  <div class="skill-name">
+                    <i class="fas fa-server"></i>
+                    <span>Virtualisation</span>
+                  </div>
+                  <span class="skill-percentage">80%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-bar" data-width="80"></div>
+                </div>
               </div>
               <div class="skill-item">
-                <i class="fas fa-network-wired"></i>
-                <span>Topologie Réseau</span>
-                <div class="skill-percentage">85%</div>
-                <div class="skill-bar" style="width: 85%"></div>
+                <div class="skill-header">
+                  <div class="skill-name">
+                    <i class="fas fa-network-wired"></i>
+                    <span>Topologie Réseau</span>
+                  </div>
+                  <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-bar" data-width="85"></div>
+                </div>
               </div>
               <div class="skill-item">
-                <i class="fas fa-database"></i>
-                <span>Services DNS/DHCP</span>
-                <div class="skill-percentage">78%</div>
-                <div class="skill-bar" style="width: 78%"></div>
+                <div class="skill-header">
+                  <div class="skill-name">
+                    <i class="fas fa-database"></i>
+                    <span>Services DNS/DHCP</span>
+                  </div>
+                  <span class="skill-percentage">78%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-bar" data-width="78"></div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Niveau Intermédiaire -->
+                <!-- Niveau Intermédiaire -->
           <div class="level-category">
             <h3 class="level-title intermediate">Intermédiaire</h3>
             <div class="level-skills">
               <div class="skill-item">
-                <i class="fab fa-docker"></i>
-                <span>Docker</span>
-                <div class="skill-percentage">70%</div>
-                <div class="skill-bar" style="width: 70%"></div>
+                <div class="skill-header">
+                  <div class="skill-name">
+                    <i class="fab fa-docker"></i>
+                    <span>Docker</span>
+                  </div>
+                  <span class="skill-percentage">70%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-bar" data-width="70"></div>
+                </div>
               </div>
               <div class="skill-item">
-                <i class="fas fa-cloud"></i>
-                <span>Cloud AWS</span>
-                <div class="skill-percentage">65%</div>
-                <div class="skill-bar" style="width: 65%"></div>
+                <div class="skill-header">
+                  <div class="skill-name">
+                    <i class="fas fa-cloud"></i>
+                    <span>Cloud AWS</span>
+                  </div>
+                  <span class="skill-percentage">65%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-bar" data-width="65"></div>
+                </div>
               </div>
               <div class="skill-item">
-                <i class="fas fa-code-branch"></i>
-                <span>CI/CD</span>
-                <div class="skill-percentage">60%</div>
-                <div class="skill-bar" style="width: 60%"></div>
+                <div class="skill-header">
+                  <div class="skill-name">
+                    <i class="fas fa-code-branch"></i>
+                    <span>CI/CD</span>
+                  </div>
+                  <span class="skill-percentage">60%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-bar" data-width="60"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -273,37 +787,49 @@ journalctl -f -u nginx</code></pre>
             <i class="fab fa-ubuntu"></i>
             <h3>Debian Server</h3>
             <p>Administration complète</p>
-            <div class="tool-percentage">95%</div>
+            <div class="tool-progress">
+              <div class="progress-fill" data-width="95"></div>
+            </div>
           </div>
           <div class="tool-card">
             <i class="fas fa-terminal"></i>
             <h3>Bash Scripting</h3>
             <p>Automatisation tâches</p>
-            <div class="tool-percentage">88%</div>
+            <div class="tool-progress">
+              <div class="progress-fill" data-width="88"></div>
+            </div>
           </div>
           <div class="tool-card">
             <i class="fas fa-eye"></i>
             <h3>Wireshark</h3>
             <p>Analyse réseau</p>
-            <div class="tool-percentage">82%</div>
+            <div class="tool-progress">
+              <div class="progress-fill" data-width="82"></div>
+            </div>
           </div>
           <div class="tool-card">
             <i class="fas fa-chart-line"></i>
             <h3>Nagios</h3>
             <p>Monitoring</p>
-            <div class="tool-percentage">75%</div>
+            <div class="tool-progress">
+              <div class="progress-fill" data-width="75"></div>
+            </div>
           </div>
           <div class="tool-card">
             <i class="fas fa-lock"></i>
             <h3>OpenVPN</h3>
             <p>Réseaux Privés</p>
-            <div class="tool-percentage">85%</div>
+            <div class="tool-progress">
+              <div class="progress-fill" data-width="85"></div>
+            </div>
           </div>
           <div class="tool-card">
             <i class="fas fa-hdd"></i>
             <h3>RAID/LVM</h3>
             <p>Gestion stockage</p>
-            <div class="tool-percentage">78%</div>
+            <div class="tool-progress">
+              <div class="progress-fill" data-width="78"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -315,30 +841,30 @@ journalctl -f -u nginx</code></pre>
             <div class="project-icon">
               <i class="fas fa-home"></i>
             </div>
-            <h4>🏠 Réseau Domestique Sécurisé</h4>
+            <h4>Réseau Domestique Sécurisé</h4>
             <p>Configuration VLAN + Pare-feu + QoS</p>
             <div class="project-progress">
-              <div class="progress-bar" style="width: 100%"></div>
+              <div class="project-bar" data-width="100"></div>
             </div>
           </div>
           <div class="mini-project">
             <div class="project-icon">
               <i class="fas fa-shield-alt"></i>
             </div>
-            <h4>🏢 VPN Site-to-Site</h4>
+            <h4>VPN Site-to-Site</h4>
             <p>Interconnexion sécurisée de sites</p>
             <div class="project-progress">
-              <div class="progress-bar" style="width: 90%"></div>
+              <div class="project-bar" data-width="90"></div>
             </div>
           </div>
           <div class="mini-project">
             <div class="project-icon">
               <i class="fas fa-server"></i>
             </div>
-            <h4>📡 Serveur Proxy</h4>
+            <h4>Serveur Proxy</h4>
             <p>Squid + Filtrage + Cache</p>
             <div class="project-progress">
-              <div class="progress-bar" style="width: 95%"></div>
+              <div class="project-bar" data-width="95"></div>
             </div>
           </div>
         </div>
@@ -387,38 +913,6 @@ journalctl -f -u nginx</code></pre>
       </div>
     </main>
 
-    <script>
-      // Initialisation des animations au chargement
-      document.addEventListener('DOMContentLoaded', function() {
-        // Animation des barres de compétences
-        const skillItems = document.querySelectorAll('.skill-item');
-        skillItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.style.animationDelay = `${index * 0.1}s`;
-            item.style.animation = 'fadeInUp 0.6s ease forwards';
-          }, 300);
-        });
-        
-        // Animation des sections au scroll
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-            }
-          });
-        }, { threshold: 0.1 });
-        
-        sections.forEach(section => {
-          section.style.opacity = '0';
-          section.style.transform = 'translateY(20px)';
-          section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          observer.observe(section);
-        });
-      });
-    </script>
-    
     <script src="/index.js"></script>
   </body>
-              </html>
+</html>
